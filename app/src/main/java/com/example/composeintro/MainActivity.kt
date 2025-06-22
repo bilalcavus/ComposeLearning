@@ -39,32 +39,90 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.composeintro.StateManagement101.CustText
 import com.example.composeintro.StateManagement101.CustomTextField
 import com.example.composeintro.StateManagement101.StateManagementIntro
+import com.example.composeintro.model.Food
 import com.example.composeintro.ui.theme.ComposeIntroTheme
+import com.google.gson.Gson
 import org.w3c.dom.Text
 
 class MainActivity : ComponentActivity() {
+
+    private val foodList = ArrayList<Food>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val navController = rememberNavController()
+
             ComposeIntroTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Box(modifier = Modifier.padding(innerPadding)){
-                        StateManagementIntro()
+                        NavHost(
+                            navController = navController ,
+                            startDestination = "list_screen",
+                        ){
+                            composable("list_screen"){
+                                initFoodList()
+                                FoodList(foods = foodList, navController)
+                            }
+                            composable("detail_screen/{selectedFood}", arguments = listOf(
+                                navArgument("selectedFood"){
+                                    type = NavType.StringType
+                                }
+                            )){
+                                val foodString = remember{
+                                    it.arguments?.getString("selectedFood")
+                                }
+                                val selectedFood = Gson().fromJson(foodString, Food::class.java)
+                                DetailScreen(selectedFood)
+                            }
+                        }
                     }
                 }
             }
         }
     }
-}
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ComposeIntroTheme {
-        StateManagementIntro()
+    private fun initFoodList() {
+        val pizza = Food(
+            name = "Pizza",
+            ingredients = "Tomato, Cheese, Pepperoni",
+            image = R.drawable.pizza
+        )
+        val makarna = Food(
+            name = "Makarna",
+            ingredients = "Un, Su, Tuz",
+            image = R.drawable.makarna
+        )
+        val kofte = Food(
+            name = "Köfte",
+            ingredients = "Kıyma, Soğan, Baharatlar",
+            image = R.drawable.kofte
+        )
+        val salata = Food(
+            name = "Salata",
+            ingredients = "Marul, Domates, Salatalık",
+            image = R.drawable.salata
+        )
+        val ekmek = Food(
+            name = "Ekmek",
+            ingredients = "Un, Su, Tuz",
+            image = R.drawable.ekmek
+        )
+
+        foodList.add(pizza)
+        foodList.add(makarna)
+        foodList.add(kofte)
+        foodList.add(salata)
+        foodList.add(ekmek)
     }
 }
+

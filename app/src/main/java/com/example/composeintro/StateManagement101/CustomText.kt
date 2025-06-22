@@ -16,8 +16,6 @@ fun CustomText(text: String) {
     Text(modifier = Modifier.clickable{
         println("texte tıklandı")
     }
-        .background(Color.Red)
-        .fillMaxWidth(0.9f )
         .padding(10.dp),
         text = text
     )
