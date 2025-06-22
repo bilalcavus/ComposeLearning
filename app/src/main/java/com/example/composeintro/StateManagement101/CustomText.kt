@@ -1,4 +1,4 @@
-package com.example.composeintro
+package com.example.composeintro.StateManagement101
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

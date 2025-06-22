@@ -1,4 +1,4 @@
-package com.example.composeintro.ui.theme
+package com.example.composeintro.StateManagement101
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

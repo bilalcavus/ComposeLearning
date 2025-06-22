@@ -39,6 +39,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.composeintro.StateManagement101.CustText
+import com.example.composeintro.StateManagement101.CustomTextField
+import com.example.composeintro.StateManagement101.StateManagementIntro
 import com.example.composeintro.ui.theme.ComposeIntroTheme
 import org.w3c.dom.Text
 
@@ -50,7 +53,7 @@ class MainActivity : ComponentActivity() {
             ComposeIntroTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Box(modifier = Modifier.padding(innerPadding)){
-                        MainScreen()
+                        StateManagementIntro()
                     }
                 }
             }
@@ -58,43 +61,10 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun MainScreen(){
-    Column (modifier = Modifier
-        .fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            CustText("Merhaba Android")
-            Spacer(modifier = Modifier.padding(10.dp))
-            CustText("MErhanba Bilal")
-            Spacer(modifier  = Modifier.padding(10.dp))
-            CustText("Merhaba ÇAvuş")
-    }
-
-}
-
-@Composable
-fun CustomTextField(string: String){
-    var myState = remember { mutableStateOf(string) }
-    TextField(value = myState.value, onValueChange = {
-        myState.value = it
-    })
-}
-
-@Composable
-fun CustText(string : String){
-    Text(text = string,
-        fontSize = 24.sp,
-        fontWeight = FontWeight.Medium,
-        fontStyle = FontStyle.Italic
-        )
-}
-
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     ComposeIntroTheme {
-        MainScreen()
+        StateManagementIntro()
     }
 }
