@@ -62,5 +62,16 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:$nav_version") // For navigation in Compose
     implementation ("com.google.code.gson:gson:2.13.1") // For JSON parsing
 
+    val retrofit_version = "2.9.0"
+    implementation("com.squareup.retrofit2:retrofit:$retrofit_version") // For Retrofit
+    implementation("com.squareup.retrofit2:converter-gson:$retrofit_version") // For Gson converter
+    implementation("com.squareup.retrofit2:adapter-rxjava2:$retrofit_version") // For RxJava adapter
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4") // For coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4") // For Android coroutines support
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2") // For ViewModel support
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2") // For lifecycle support
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2") // For LiveData support
+
 
 }

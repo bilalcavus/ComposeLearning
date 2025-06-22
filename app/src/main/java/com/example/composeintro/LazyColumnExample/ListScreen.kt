@@ -1,4 +1,4 @@
-package com.example.composeintro
+package com.example.composeintro.LazyColumnExample
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -14,13 +14,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.composeintro.StateManagement101.CustomText
-import com.example.composeintro.StateManagement101.StateManagementIntro
-import com.example.composeintro.model.Food
-import com.example.composeintro.ui.theme.ComposeIntroTheme
+import com.example.composeintro.LazyColumnExample.model.Food
 import com.google.gson.Gson
 
 @Composable
